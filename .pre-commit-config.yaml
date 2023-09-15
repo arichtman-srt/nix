@@ -43,6 +43,7 @@ repos:
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
+    additional_dependencies: [ruamel_yaml]
 
 - repo: https://github.com/kamadorueda/alejandra
   # TODO: When this issue is resolved, switch to proper tag ref
@@ -57,3 +58,8 @@ repos:
   - id: check-renovate
     additional_dependencies: [json5]
   - id: check-github-actions
+
+- repo: https://github.com/hadolint/hadolint
+  rev: v2.12.0
+  hooks:
+  - id: hadolint

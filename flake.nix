@@ -29,7 +29,7 @@
       in {
         devShell = with pkgs;
           mkShell {
-            buildInputs = [poetryEnv terraform terragrunt awscli2 poetry graphviz];
+            buildInputs = [poetryEnv poetry];
             # https://github.com/pre-commit/pre-commit/issues/432
             shellHook = ''
               export SKIP=terraform_fmt,terragrunt_fmt,check-renovate
@@ -54,6 +54,25 @@
               - Direnv activation file
 
               glhf
+            '';
+          };
+          dotnet = {
+            path = ./dotnet;
+            description = "Dotnet SWEng environment";
+            welcomeText = ''
+              # SilverRailTech Dotnet Software Engineering
+
+              ## When the best is not enough, you call us
+
+              - Pre-commit hooks
+              - Nix flake development environment
+              - Python + Poetry project
+              - Git attributes
+              - Git ignore
+              - Direnv activation file
+
+              Now give 'em hell marine
+
             '';
           };
         };
