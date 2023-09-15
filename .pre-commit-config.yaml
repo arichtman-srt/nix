@@ -48,7 +48,7 @@ repos:
 - repo: https://github.com/kamadorueda/alejandra
   # TODO: When this issue is resolved, switch to proper tag ref
   # Ref: https://github.com/kamadorueda/alejandra/issues/388
-  rev: 9512caae61b6fbda5298a33813976db4f1c0f17d
+  rev: e53c2c6c6c103dc3f848dbd9fbd93ee7c69c109f
   hooks:
   - id: alejandra-nix
 
