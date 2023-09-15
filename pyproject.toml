@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "pe_env"
+name = "srt_environment_templates"
 version = "0.1.0"
-description = "PE environment"
+description = "Environment templates for SRT"
 authors = ["Ariel Richtman <ariel.richtman@silverrailtech.com>"]
 
 [tool.poetry.dependencies]

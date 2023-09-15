@@ -1,7 +1,8 @@
 {
   description = "Platform Engineering environment";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # https://github.com/nix-community/poetry2nix/issues/1291
+    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
     utils = {
       url = "github:numtide/flake-utils";
     };
@@ -10,24 +11,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, utils, self, poetry2nix, ... }:
-    utils.lib.eachDefaultSystem (system:
-      let
+  outputs = {
+    nixpkgs,
+    utils,
+    self,
+    poetry2nix,
+    ...
+  }:
+    utils.lib.eachDefaultSystem (
+      system: let
         inherit (poetry2nix.legacyPackages.${system}) mkPoetryEnv;
         pkgs = import nixpkgs {
-            inherit system;
-          };
-          poetryEnv = mkPoetryEnv {
-            projectDir = ./.;
-          };
+          inherit system;
+        };
+        poetryEnv = mkPoetryEnv {
+          projectDir = ./.;
+        };
       in {
-        devShell = with pkgs; mkShell {
-          buildInputs = [ poetryEnv terraform terragrunt awscli2 poetry graphviz ];
+        devShell = with pkgs;
+          mkShell {
+            buildInputs = [poetryEnv terraform terragrunt terraform-docs awscli2 poetry];
             shellHook = ''
-            pre-commit install --install-hooks
-            echo "Entered THE AWS ZONE"
-          '';
-      };
-    }
-  );
+              export SKIP=check-renovate,check-github-actions
+              pre-commit install --install-hooks
+            '';
+          };
+      }
+    );
 }
