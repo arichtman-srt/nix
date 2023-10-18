@@ -23,6 +23,8 @@
         inherit (poetry2nix.legacyPackages.${system}) mkPoetryEnv;
         pkgs = import nixpkgs {
           inherit system;
+          # Required for Terraform's BSL
+          config.allowUnfree = true;
         };
         poetryEnv = mkPoetryEnv {
           projectDir = ./.;
