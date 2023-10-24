@@ -63,3 +63,12 @@ repos:
   rev: v2.12.0
   hooks:
   - id: hadolint
+- repo: local
+  hooks:
+  - id: copy-repeated-files
+    name: Copy files
+    # entry: "/usr/bin/find . -maxdepth 1 -type d -not -path '*/.*' -not -path '.'  | xargs -I% cp .envrc %"
+    entry: copy-repeated-files.sh
+    language: script
+    always_run: true
+    pass_filenames: false
