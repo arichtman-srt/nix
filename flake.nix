@@ -7,7 +7,6 @@
     };
     poetry2nix = {
       url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = {
@@ -19,11 +18,11 @@
   }:
     utils.lib.eachDefaultSystem (
       system: let
-        inherit (poetry2nix.legacyPackages.${system}) mkPoetryEnv;
         pkgs = import nixpkgs {
           inherit system;
+          overlays = [poetry2nix.overlays.default];
         };
-        poetryEnv = mkPoetryEnv {
+        poetryEnv = pkgs.poetry2nix.mkPoetryEnv {
           projectDir = ./.;
         };
       in {
