@@ -34,7 +34,7 @@
           mkShell {
             buildInputs = [poetryEnv terraform terragrunt terraform-docs awscli2 poetry];
             shellHook = ''
-              export SKIP=check-renovate,check-github-actions,hadolint
+              export SKIP=check-renovate,check-github-actions,hadolint,copy-repeated-files
               pre-commit install --install-hooks
             '';
           };
