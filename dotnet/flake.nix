@@ -28,7 +28,7 @@
           pre-commit
         ];
         shellHook = ''
-          export SKIP=terragrunt_fmt,check-github-actions
+          export SKIP=terragrunt_fmt,check-github-actions,copy-repeated-files
           pre-commit install --install-hooks
         '';
       };
