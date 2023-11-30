@@ -2,7 +2,7 @@
   description = "A Nix-flake-based C# development environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -15,6 +15,8 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
+        # Required for Terraform's BSL
+        config.allowUnfree = true;
       };
     in {
       devShells.default = pkgs.mkShell {
