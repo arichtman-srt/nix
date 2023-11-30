@@ -1,14 +1,12 @@
 {
   description = "Platform Engineering environment";
   inputs = {
-    # https://github.com/nix-community/poetry2nix/issues/1291
-    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     utils = {
       url = "github:numtide/flake-utils";
     };
     poetry2nix = {
       url = "github:nix-community/poetry2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = {
@@ -20,13 +18,13 @@
   }:
     utils.lib.eachDefaultSystem (
       system: let
-        inherit (poetry2nix.legacyPackages.${system}) mkPoetryEnv;
         pkgs = import nixpkgs {
           inherit system;
           # Required for Terraform's BSL
           config.allowUnfree = true;
+          overlays = [poetry2nix.overlays.default];
         };
-        poetryEnv = mkPoetryEnv {
+        poetryEnv = pkgs.poetry2nix.mkPoetryEnv {
           projectDir = ./.;
         };
       in {
