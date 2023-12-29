@@ -65,12 +65,25 @@
 
               - Pre-commit hooks
               - Nix flake development environment
-              - Python + Poetry project
-              - Git attributes
               - Git ignore
               - Direnv activation file
 
               Now give 'em hell marine
+
+            '';
+          };
+          ruby = {
+            path = ./ruby;
+            description = "Ruby environment";
+            welcomeText = ''
+              # SilverRailTech Ruby
+
+              ## Shine bright like a gem
+
+              - Pre-commit hooks
+              - Nix flake development environment
+              - Git ignore
+              - Direnv activation file
 
             '';
           };
