@@ -36,7 +36,7 @@ repos:
   rev: v0.9.15
   hooks:
   - id: pymarkdown
-    additional_dependencies: [wcwidth]
+    additional_dependencies: [wcwidth, ruamel_yaml]
 
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
   rev: v2.12.0
@@ -55,7 +55,7 @@ repos:
   rev: 0.27.3
   hooks:
   - id: check-renovate
-    additional_dependencies: [json5]
+    additional_dependencies: [json5, urllib3]
   - id: check-github-actions
 
 - repo: https://github.com/hadolint/hadolint
