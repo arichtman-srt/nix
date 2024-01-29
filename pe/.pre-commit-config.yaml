@@ -45,11 +45,9 @@ repos:
     args: [--autofix, --indent, '2']
 
 - repo: https://github.com/kamadorueda/alejandra
-  # TODO: When this issue is resolved, switch to newer tag ref
-  # Ref: https://github.com/kamadorueda/alejandra/issues/388
-  rev: 1.3.0
+  rev: 3.0.0
   hooks:
-  - id: alejandra
+  - id: alejandra-system
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
   rev: 0.27.3
