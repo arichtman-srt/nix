@@ -27,13 +27,13 @@ repos:
     exclude: ^.*appsettings.*\.json$
 
 - repo: https://github.com/antonbabenko/pre-commit-terraform
-  rev: v1.86.0
+  rev: v1.88.0
   hooks:
   - id: terraform_fmt
   - id: terragrunt_fmt
 
 - repo: https://github.com/jackdewinter/pymarkdown
-  rev: 0.9.16
+  rev: v0.9.17
   hooks:
   - id: pymarkdown
     additional_dependencies: [wcwidth, ruamel_yaml]
@@ -50,7 +50,7 @@ repos:
   - id: alejandra-system
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 0.27.3
+  rev: 0.28.0
   hooks:
   - id: check-renovate
     additional_dependencies: [json5, urllib3]
